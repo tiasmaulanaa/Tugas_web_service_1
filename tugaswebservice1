@@ -1,0 +1,55 @@
+Elemen berelasi seperti hubungan orang tua (parents) dan anak (children). Untuk mengerti terminologi XML, kita harus tahu relasi antara elemen XML yang mempunyai nama dan bagaimana isi elemen dideskripsikatK Bayangkan contoh di bawah sebagai deskripsi suatu buku.
+
+Book Title: My First XML
+Chapter 1: Introduction to XML
+
+What is HTML
+What is XML
+Chapter 2: XML Syntax
+
+Elements must have a closing tag
+Elements must be properly nested
+Deskripsi di atas diturunkan dalam XML di bawah ini
+
+<book>
+<title>My First XML</title>
+<prOd id= “33 -6 5711 media= “paper”></prod>
+<chapter>Introduction to XML <para>What is HTML</para>
+<para>What is XML</para>
+</chapter>
+<chapter>XML Syntax
+<para>Elements must have a closing tag</para> <para>Elements must be properly nested</para>
+</chapter>
+</book>
+
+Tag <book> sebagai root tag, sedangkan tag <title>, <prod>, dan <chapter> berfungsi sebagai elemen anak dari tag <book>. Book merupakan elemen parents dari elemen lainnya. Tag <title>, <prod>, dan < chapter> merupakan elemen sepupu karena mempunyai orang tua yang sama.
+
+
+Sebuah Document Type Definition (DTD) mendefinisikan blok bangunan hukum dari dokumen XML. Ia mendefinisikan struktur dokumen dengan daftar elemen hukum dan atribut.
+Sebuah DTD dapat dideklarasikan inline dalam dokumen XML, atau sebagai referensi eksternal.
+Jika DTD dideklarasikan di dalam file XML, itu harus dibungkus dalam sebuah definisi DOCTYPE dengan sintaks berikut:
+<!DOCTYPE root-element [element-declarations]>
+
+Contoh dokumen XML dengan DTD internal:
+<?xml version="1.0"?>
+<!DOCTYPE note [
+<!ELEMENT note (to,from,heading,body)>
+<!ELEMENT to (#PCDATA)>
+<!ELEMENT from (#PCDATA)>
+<!ELEMENT heading (#PCDATA)>
+<!ELEMENT body (#PCDATA)>
+]>
+<note>
+<to>Tove</to>
+<from>Jani</from>
+<heading>Reminder</heading>
+<body>Don't forget me this weekend</body>
+</note> 
+
+DTD di atas ditafsirkan seperti ini:
+!DOCTYPE note mendefinisikan bahwa elemen root dari dokumen ini adalah catatan
+!ELEMEN note  mendefinisikan bahwa elemen catatan berisi empat unsur: "ke, dari, judul, tubuh"
+!ELEMEN to mendefinisikan untuk elemen untuk menjadi tipe "# PCDATA"
+!ELEMEN from mendefinisikan dari unsur untuk menjadi tipe "# PCDATA"
+!ELEMEN heading mendefinisikan elemen menuju dari tipe "# PCDATA"
+!ELEMEN body mendefinisikan elemen body untuk menjadi tipe "# PCDATA"
